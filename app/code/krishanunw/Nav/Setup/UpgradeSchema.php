@@ -29,6 +29,16 @@ class UpgradeSchema implements \Magento\Framework\Setup\UpgradeSchemaInterface{
                 'LENGTH'=>255
             ]
         );
+        $setup->getConnection()->addColumn(
+            $setup->getTable('krishanunw_table'),
+            'status',
+            [
+                'type' => \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+                'nullable' => true,
+                'comment' => 'status',
+                'LENGTH'=>1
+            ]
+        );
          $setup->getConnection()->dropColumn($setup->getTable('krishanunw_table'), 'order_id');
          $setup->getConnection()->addColumn(
             $setup->getTable('krishanunw_table'),
