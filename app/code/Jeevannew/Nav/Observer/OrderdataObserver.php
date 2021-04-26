@@ -16,7 +16,7 @@ class OrderdataObserver implements ObserverInterface
     public function __construct(\Magento\Framework\App\Action\Context $context,
         \Jeevannew\Nav\Model\JeevanTableFactory  $dataExample,
     \Magento\Framework\Controller\ResultFactory $result){
-        parent::__construct($context);
+        //parent::__construct($context);
         $this->_dataExample = $dataExample;
         $this->resultRedirect = $result;
     }
@@ -29,7 +29,7 @@ public function execute(\Magento\Framework\Event\Observer $observer)
     $model = $this->_dataExample->create();
         $model->addData([
             "order_id" => $order->getId(),
-            "taxvat" => '123456'
+            "taxvat" => $order->getData('customer_taxvat')
             ]);
         $saveData = $model->save();
     

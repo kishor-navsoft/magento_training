@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Jeevannew_Nav::nav" title="Jeevan Navsoft" module="Jeevannew_Nav" sortOrder="51" resource="Jeevannew_Nav::nav"/>
+        <add id="Jeevannew_Nav::post" title="Add Order ID" module="Jeevannew_Nav" sortOrder="10" action="jeevannew_nav/post" resource="Jeevannew_Nav::post" parent="Jeevannew_Nav::nav"/>
+    </menu>
+</config>

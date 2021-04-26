@@ -44,19 +44,19 @@ class InstallSchema implements InstallSchemaInterface
                 ->setOption('type', 'InnoDB')
                 ->setOption('charset', 'utf8');
             $installer->getConnection()->createTable($table);
-            $installer->getConnection()->addForeignKey(
-                $setup->getFkName(
-                    'jeevannew_nav_table',                   // priTableName
-                    'order_id',                  // priColumnName
-                    'sales_order',                          // refTableName
-                    'entity_id'                                 // refColumnName
-                ),
-                $setup->getTable('jeevannew_nav_table'),
-                'order_id',                      // column
-                $setup->getTable('sales_order'), 
-                'entity_id',                                    // refColumn
-                \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE // onDelete
-    );
+    //         $installer->getConnection()->addForeignKey(
+    //             $setup->getFkName(
+    //                 'jeevannew_nav_table',                   // priTableName
+    //                 'order_id',                  // priColumnName
+    //                 'sales_order',                          // refTableName
+    //                 'entity_id'                                 // refColumnName
+    //             ),
+    //             $setup->getTable('jeevannew_nav_table'),
+    //             'order_id',                      // column
+    //             $setup->getTable('sales_order'), 
+    //             'entity_id',                                    // refColumn
+    //             \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE // onDelete
+    // );
         }
 
         $installer->endSetup();
