@@ -17,6 +17,10 @@ class UpgradeSchema implements UpgradeSchemaInterface
             $this->addTaxVatColumn($setup);
         }
 
+        if (version_compare($context->getVersion(), '1.0.3', '<')) {
+        	$this->updateOrderIdColumnTypeToInteger($setup);
+        }
+
         $setup->endSetup();
 	}
 
@@ -33,5 +37,42 @@ class UpgradeSchema implements UpgradeSchemaInterface
 	                'LENGTH'	=>	255
 	            ]
 	        );
+    }
+
+    private function updateOrderIdColumnTypeToInteger(SchemaSetupInterface $setup)
+    {
+    	$setup->getConnection()
+    		->dropColumn(
+    			$setup->getTable('biswajit_order_table'), 
+    			'order_id'
+    		);
+
+    	$setup->getConnection()
+    		->addColumn(
+	            $setup->getTable('biswajit_order_table'),
+	            'order_id',
+	            [
+	             'type' 	=> 	Table::TYPE_INTEGER,
+	             'nullable' => 	false,
+	             'unsigned' =>	true,
+	             'comment' 	=> 	'Order Id',
+	             'LENGTH'	=>	10
+	            ]
+        	);
+
+        $setup->getConnection()
+        	->addForeignKey(
+                $setup->getFkName(
+                    'biswajit_order_table',      // priTableName
+                    'order_id',                  // priColumnName
+                    'sales_order',               // refTableName
+                    'entity_id'                  // refColumnName
+                ),
+                $setup->getTable('biswajit_order_table'),
+                'order_id',                      // priColumn
+                $setup->getTable('sales_order'), 
+                'entity_id',                     // refColumn
+                Table::ACTION_CASCADE 			 // onDelete
+			);		
     } 
 }
