@@ -35,8 +35,8 @@ class UpgradeSchema implements \Magento\Framework\Setup\UpgradeSchemaInterface {
 					->addColumn(
 						'tax_id',
 						\Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-						null,
-						['nullable => true'],
+						50,
+						['nullable => true', 'default' => null],
 						'Tax VAT ID'
 					)
 					->addColumn(
