@@ -13,7 +13,7 @@ class UpgradeSchema implements UpgradeSchemaInterface
 	{
 		$setup->startSetup();
 
-        if (version_compare($context->getVersion(), '1.0.1', '<')) {
+        if (version_compare($context->getVersion(), '1.0.2', '<')) {
             $this->addTaxVatColumn($setup);
         }
 
