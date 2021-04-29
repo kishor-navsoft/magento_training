@@ -57,13 +57,13 @@ class CustomerOrderEligibilityObserver implements ObserverInterface
 		if ($noOfPendingOrders > $noOfAllowedPendingOrders) {
 			$this->_logger->info("noOfPendingOrders is greater than noOfAllowedPendingOrders");
 
-        	$redirectionUrl = $this->_url->getUrl('sales/order/history');
+			$redirectionUrl = $this->_url->getUrl('sales/order/history');
 
-        	$this->_logger->info("Redirect URL : $redirectionUrl");
+			$this->_logger->info("Redirect URL : $redirectionUrl");
     		
-    		$this->_responseFactory->create()->setRedirect($redirectionUrl)->sendResponse();
+			$this->_responseFactory->create()->setRedirect($redirectionUrl)->sendResponse();
     		
-    		die();
+			die();
 		}
 	}
 }
