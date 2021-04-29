@@ -7,7 +7,6 @@ use Magento\Framework\DataObject;
 
 class Test extends Action
 {
-
 	public function execute()
 	{
 		$textDisplay = new DataObject(['text' => 'Biswajit Order Event Test Text']);
