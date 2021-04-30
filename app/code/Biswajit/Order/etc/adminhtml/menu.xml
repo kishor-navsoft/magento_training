@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add id="Biswajit_Order::salesorder" title="Biswajit Order" module="Biswajit_Order" sortOrder="91" resource="Biswajit_Order::salesorder" />
+    	<add id="Biswajit_Order::salesorder_list" title="Sales Order List" module="Biswajit_Order" sortOrder="10" resource="Biswajit_Order::salesorder_list" action="biswajit_order/sales/orderlist" parent="Biswajit_Order::salesorder"/>
+    </menu>
+</config>
