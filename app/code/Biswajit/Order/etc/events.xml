@@ -4,6 +4,6 @@
         <observer name="sales_order_save_after_observer" instance="Biswajit\Order\Observer\Sales\OrderDataObserver" />
     </event>
     <event name="sales_order_save_before">
-        <observer name="sales_order_save_before_observer" instance="Biswajit\Order\Observer\Sales\CustomerOrderEligibilityObserver" />
+        <observer name="sales_order_save_before_observer" instance="Biswajit\Order\Observer\Sales\CustomerOrderEligibilityObserver" disabled="true" />
     </event>
 </config>
