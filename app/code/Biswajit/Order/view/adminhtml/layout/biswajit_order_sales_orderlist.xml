@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<!--     <referenceBlock name="page.title">
+        <action method="setPageTitle">
+            <argument name="title" xsi:type="string">Sales Order List</argument>
+        </action>
+    </referenceBlock>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Backend\Block\Template" template="Biswajit_Order::sales_order_list.phtml"/>
+        </referenceContainer>
+    </body> -->
+
+    <update handle="styles"/>
+    <body>
+        <referenceContainer name="content">
+            <uiComponent name="biswajit_order_sales_order_list"/>
+        </referenceContainer>
+    </body>
+</page>

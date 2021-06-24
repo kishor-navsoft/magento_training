@@ -4,42 +4,31 @@ namespace Biswajit\Order\Observer\Sales;
 
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Event\Observer;
-use Magento\Framework\App\Action\Context;
+// use Magento\Framework\App\Action\Context;
 
-use Psr\Log\LoggerInterface;
+// use Psr\Log\LoggerInterface;
 
-use Biswajit\Order\Model\OrderDataFactory;
+use Biswajit\Order\Model\OrderData;
 
 class OrderDataObserver implements ObserverInterface
 {
-	// protected $_logger;
+	protected $_orderData;
 
-	protected $_orderDataFactory;
-
-	// public function __construct(Context $context, LoggerInterface $logger)
-	// {
-	// 	$this->_logger = $logger;
-	// }
-
-	public function __construct(Context $context, OrderDataFactory $orderDataFactory)
+	public function __construct(OrderData $orderData)
 	{
-		$this->_orderDataFactory = $orderDataFactory;
+		$this->_orderData = $orderData;        
 	}
 
 	public function execute(Observer $observer)
 	{
-		// $this->_logger->info('Logging while order is saved');
-
     	$orderDetails = $observer->getEvent()->getOrder();
 
-    	$orderData = $this->_orderDataFactory->create();
-
-    	$orderData->addData([
+    	$this->_orderData->addData([
             "order_id" 	=> $orderDetails->getId(),
             "taxvat" 	=> $orderDetails->getData('customer_taxvat')
         ]);
 
-        $savedOrder = $orderData->save();
+        $savedOrder = $this->_orderData->save();
 	} 
 }
 	
